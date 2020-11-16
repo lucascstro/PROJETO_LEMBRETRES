@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header bg-info text-white">Suas tarefas</div>
+        <div class="card-body" style="background-color: f05454;">
+            <mat-accordion class="example-headers-align">
+                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            titulo
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            data
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <mat-form-field>
+                        <mat-label>Descrição</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-action-row>
+                        <button mat-button class="btn-info" (click)="nextStep()">Excluir</button>
+                        <button mat-button class="btn-danger" (click)="nextStep()">Editar</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            titulo
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            data
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <mat-form-field>
+                        <mat-label>Descrição</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-action-row>
+                        <button mat-button class="btn-info" (click)="nextStep()">Excluir</button>
+                        <button mat-button class="btn-danger" (click)="nextStep()">Editar</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            titulo
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            data
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <mat-form-field>
+                        <mat-label>Descrição</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-action-row>
+                        <button mat-button class="btn-info" (click)="nextStep()">Excluir</button>
+                        <button mat-button class="btn-danger" (click)="nextStep()">Editar</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>

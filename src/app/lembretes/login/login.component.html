@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header bg-info text-white">Olá, seja bem vindo ao Lembretes!</div>
+        <div class="card-body" style="background-color: f05454;">
+            <div class=" text-center">
+                <img src="../../assets/img/userIMG.png" height="250px">
+            </div>
+            <div class="row justify-content-center">
+                <mat-form-field>
+                    <mat-label>Login</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
+            </div>
+            <div class="row justify-content-center">
+                <mat-form-field>
+                    <mat-label>Senha</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+                </mat-form-field>
+            </div>
+            <div class="row justify-content-center ">
+                <button mat-raised-button class="bg-info" style="color: white;">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
