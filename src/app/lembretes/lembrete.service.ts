@@ -6,10 +6,13 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class LembreteService{
+
   private lembretes: Lembretes [] = [];
-private listaLembretesAtualizada = new Subject <Lembretes[]>();
-constructor (private httpClient: HttpClient){
-}
+
+  private listaLembretesAtualizada = new Subject <Lembretes[]>();
+
+  constructor (private httpClient: HttpClient){
+  }
 
   getLembretes(): void {
     this.httpClient.get <{mensagem: string, lembretes:
@@ -20,15 +23,14 @@ constructor (private httpClient: HttpClient){
     }
     )
     }
-  adicionarLembretes(titulo: string, data: string, descricao: number) {
+  adicionarLembretes(titulo: string, data: string, descricao: string) {
     const lembretes: Lembretes = {
 
     titulo: titulo,
     data:data,
     descricao: descricao,
     };
-    this.httpClient.post<{mensagem: string}> ('http://localhost:3000/api/lembretes',
-    lembretes).subscribe(
+    this.httpClient.post<{mensagem: string}> ('http://localhost:3000/api/lembretes',lembretes).subscribe(
     (dados) => {
     console.log(dados.mensagem);
     this.lembretes.push(lembretes);

@@ -16,6 +16,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDatepickerModule } from '@angular/material/datepicker';
 import {FormsModule} from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatExpansionModule,
     MatDatepickerModule,
-    FormsModule,MatToolbarModule
+    FormsModule,MatToolbarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

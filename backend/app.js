@@ -22,21 +22,24 @@ app.use((req, res, next) => {
 
 app.get('/api/lembretes', (req, res, next) => {
     Lembretes.find().then(
-        Lista => {
+        documents => {
             res.status(200).json({
                 mensagem: "Tudo OK",
-                lembretes: Lista
+                lembretes: documents
             });
         })
+        next();
 });
 
 app.post('/api/lembretes', (req, res, next) => {
-    const lembretes = new Livro({
+    const lembretes = new Lembretes({
         titulo: req.body.titulo,
         data: req.body.data,
         descricao: req.body.descricao
-    })
+    });
+
     lembretes.save();
+
     console.log(lembretes);
     res.status(201).json({ mensagem: 'Lembrete inserido' })
 });
