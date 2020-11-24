@@ -3,53 +3,17 @@
         <div class="card-header bg-info text-white">Suas tarefas</div>
         <div class="card-body" style="background-color: f05454;">
             <mat-accordion class="example-headers-align">
-                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle  *ngFor="let lembrete of lembretes">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            titulo
+                            {{lembrete.titulo}}
                         </mat-panel-title>
                         <mat-panel-description>
-                            data
+                            {{lembrete.data}
                         </mat-panel-description>
                     </mat-expansion-panel-header>
                     <mat-form-field>
-                        <mat-label>Descrição</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-action-row>
-                        <button mat-button class="btn-info" (click)="nextStep()">Excluir</button>
-                        <button mat-button class="btn-danger" (click)="nextStep()">Editar</button>
-                    </mat-action-row>
-                </mat-expansion-panel>
-                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            titulo
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            data
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <mat-form-field>
-                        <mat-label>Descrição</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-action-row>
-                        <button mat-button class="btn-info" (click)="nextStep()">Excluir</button>
-                        <button mat-button class="btn-danger" (click)="nextStep()">Editar</button>
-                    </mat-action-row>
-                </mat-expansion-panel>
-                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            titulo
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            data
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <mat-form-field>
-                        <mat-label>Descrição</mat-label>
+                        <mat-label>{{lembrete.descricao}}</mat-label>
                         <input matInput>
                     </mat-form-field>
                     <mat-action-row>
@@ -58,6 +22,10 @@
                     </mat-action-row>
                 </mat-expansion-panel>
             </mat-accordion>
+
+            <p *ngIf="lembretes.length <= 0">
+              Nenhum lembrete cadastrado
+            </p>
         </div>
     </div>
 </div>
