@@ -28,7 +28,6 @@ app.get('/api/lembretes', (req, res, next) => {
                 lembretes: documents
             });
         })
-        next();
 });
 
 app.post('/api/lembretes', (req, res, next) => {

@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({ providedIn: 'root' })
-export class LembreteService{
+export class LembretesService{
 
   private lembretes: Lembretes [] = [];
 
@@ -38,8 +38,6 @@ export class LembreteService{
     }
     )
     }
-
-
     getListaDeLembretesAtualizadaObservable(){
       return this.listaLembretesAtualizada.asObservable();
     }

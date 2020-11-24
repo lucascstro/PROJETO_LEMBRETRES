@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {LembreteService} from '../lembrete.service';
+import {LembretesService} from '../lembrete.service';
  @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -8,7 +8,7 @@ import {LembreteService} from '../lembrete.service';
 })
 export class FormularioComponent implements OnInit  {
 
-  constructor( public lembreteService:LembreteService) { }
+  constructor( public lembreteService:LembretesService) { }
   ngOnInit(): void {
   }
   onAdicionarLembrete(form: NgForm){
@@ -17,7 +17,7 @@ export class FormularioComponent implements OnInit  {
     }
     this.lembreteService.adicionarLembretes(
       form.value.titulo,
-      form.value.data,
+      form.value.date,
       form.value.descricao
     );
   form.resetForm();

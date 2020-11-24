@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {Lembretes} from '../lembrete.model';
-import {LembreteService} from '../lembrete.service';
+import {LembretesService} from '../lembrete.service';
 import {Subscription, Observable} from 'rxjs';
+
+
 @Component({
   selector: 'app-mostra-lembretes',
   templateUrl: './mostra-lembretes.component.html',
@@ -9,32 +11,29 @@ import {Subscription, Observable} from 'rxjs';
 })
 export class MostraLembretesComponent implements OnInit,OnDestroy {
  lembretes: Lembretes[] = [];
+ private lembretesSubscription: Subscription;
 
- private lembreteSubscription: Subscription;
-  constructor(public lembretesService: LembreteService) { }
+  constructor(public lembreteService: LembretesService) { }
 
   ngOnInit(): void {
-    this.lembretesService.getLembretes();
-    this.lembreteSubscription= this.lembretesService.getListaDeLembretesAtualizadaObservable()
+    this.lembreteService.getLembretes();
+    this.lembretesSubscription= this.lembreteService.getListaDeLembretesAtualizadaObservable()
     .subscribe((lembretes:Lembretes[])=>{
       this.lembretes = lembretes;
     });
   }
+  ngOnDestroy(): void{
+    this.lembretesSubscription.unsubscribe();
+  }
 
   step = 0;
-
   setStep(index: number) {
     this.step = index;
   }
-
   nextStep() {
     this.step++;
   }
-
   prevStep() {
     this.step--;
-  }
-  ngOnDestroy(): void{
-    this.lembreteSubscription.unsubscribe();
   }
 }
