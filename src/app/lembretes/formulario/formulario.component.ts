@@ -10,7 +10,9 @@ import {Lembretes } from '../lembrete.model';
 })
 export class FormularioComponent implements OnInit  {
 
-  constructor( public lembreteService:LembretesService, public route: ActivatedRoute) { }
+  constructor(
+    public lembreteService:LembretesService,
+    public route: ActivatedRoute) { }
 
   private modo: string = "criar";
   private idLembrete:string;
@@ -19,15 +21,8 @@ export class FormularioComponent implements OnInit  {
     this.route.paramMap.subscribe((paramMap:ParamMap) =>{
       if(paramMap.has("idLembrete")){
         this.modo="editar";
-        this.idLembrete=paramMap.get("idLembrete");
-        this.lembreteService.getLembrete(this.idLembrete).subscribe(dadosLem =>{
-          this.lembrete={
-            id: dadosLem._id,
-            titulo: dadosLem.titulo,
-            data: dadosLem.data,
-            descricao: dadosLem.descricao
-          };
-        });
+        this.idLembrete = paramMap.get("idLembrete");
+        this.lembrete = this.lembreteService.getLembrete(this.idLembrete);
       }
         else{
         this.modo = "criar";

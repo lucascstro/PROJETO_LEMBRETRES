@@ -15,6 +15,13 @@ export class LembretesService{
   constructor (private httpClient: HttpClient){
   }
 
+  getLembrete(idLembrete: string){
+    return{
+      ...this.lembretes.find((lem) => lem.id === idLembrete)
+    }
+
+  }
+
   getLembretes(): void {
     this.httpClient.get <{mensagem: string, lembretes:any}>('http://localhost:3000/api/lembretes').pipe(map((dados) => {
     return dados.lembretes.map(lembrete => {
@@ -31,7 +38,7 @@ export class LembretesService{
     this.listaLembretesAtualizada.next([...this.lembretes]);
     })}
 
-    
+
   adicionarLembretes(titulo: string, data: string, descricao: string) {
     const lembretes: Lembretes = {
     id: null,
@@ -49,12 +56,12 @@ export class LembretesService{
     getListaDeLembretesAtualizadaObservable(){
       return this.listaLembretesAtualizada.asObservable();
     }
-
+/*
     getLembrete (idLembrete:string){
       //return{...this.lembretes.find((lem) => lem.id === idLembrete)};
       return this.httpClient.get<{_id: string, titulo: string, data: string,
         descricao:string}>('http://localhost:3000/api/lembretes/${idLembrete}');
-    }
+    }*/
 
     atualizarLembrete (id:string, titulo:string, data:string, descricao:string){
       const lembrete : Lembretes = {
@@ -63,7 +70,7 @@ export class LembretesService{
         data,
         descricao
           };
-      this.httpClient.put('http://localhost:3000/api/lembretes/${id}', lembrete)
+      this.httpClient.put(`http://localhost:3000/api/lembretes/${id}`, lembrete)
       .subscribe((res => console.log(res => {
         const copia = [...this.lembretes];
         const indice = copia.findIndex (lem => lem.id === lembrete.id);
