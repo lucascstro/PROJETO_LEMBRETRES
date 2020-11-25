@@ -1,20 +1,20 @@
-<form (submit)="onAdicionarLembrete(lembreteForm)" #lembreteForm="ngForm">
+<form (submit)="onSalvarLembrete(lembreteForm)" #lembreteForm="ngForm">
     <div class="container">
         <div class="card mt-5">
-            <div class="card-header bg-info text-white">Nova Tarefa</div>
+            <div class="card-header text-white" style="background-color: blue;">Nova Tarefa</div>
             <div class="card-body" style="background-color: f05454;">
                 <div class="row justify-content-center">
                     <div class="col-8">
                         <mat-form-field class="col-12">
                             <mat-label>Titulo</mat-label>
-                            <input required minlength="1" matInput type="text" name="titulo" ngModel #titulo="ngModel">
+                            <input type="text" matInput name="titulo" ngModel required minlength="1"#titulo="ngModel" [ngModel]="lembrete?.titulo" >
                             <mat-error *ngIf="titulo.invalid">Digite um titutlo válido</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-4">
                         <mat-form-field class="col-12">
                             <mat-label>Data</mat-label>
-                            <input required matInput type="date" name="date" ngModel #date="ngModel">
+                            <input type="date"  matInput name="date" ngModel required  minlength="1" #date="ngModel" [ngModel]="lembrete?.data">
                             <mat-error *ngIf="date.invalid">Digite uma data válido</mat-error>
                         </mat-form-field>
                     </div>
@@ -23,13 +23,13 @@
                     <div class="col-12">
                         <mat-form-field class="col-12">
                             <mat-label>Descrição</mat-label>
-                            <textarea required minlength="4" matInput name="descricao" ngModel #descricao="ngModel"></textarea>
-                            <mat-error *ngIf="descricao.invalid">Digite um titutlo válido</mat-error>
+                            <textarea matInput name="descricao" ngModel required minlength="4" #descricao="ngModel" [ngModel]="lembrete?.descricao"></textarea>
+                            <mat-error *ngIf="descricao.invalid">Digite uma descrrição válida</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row justify-content-center ">
-                    <button class="bg-info" mat-raised-button color="primary">Salvar</button>
+                    <button  mat-raised-button color="accent">Salvar</button>
                 </div>
             </div>
         </div>

@@ -3,21 +3,21 @@
         <div class="card-header bg-info text-white">Suas tarefas</div>
         <div class="card-body" style="background-color: f05454;">
             <mat-accordion class="example-headers-align" *ngIf="lembretes.length>0">
-                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle *ngFor="let lembretes of lembretes">
+                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle *ngFor="let lembrete of lembretes">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            {{lembretes.titulo}}
+                            {{lembrete.titulo}}
                         </mat-panel-title>
                         <mat-panel-description>
-                            {{lembretes.data}}
+                            {{lembrete.data}}
                         </mat-panel-description>
                     </mat-expansion-panel-header>
 
-                    <p>{{lembretes.descricao}}</p>
+                    <p>{{lembrete.descricao}}</p>
 
                     <mat-action-row>
-                        <button mat-button class="btn-info" (click)="nextStep()">Excluir</button>
-                        <button mat-button class="btn-danger" (click)="nextStep()">Editar</button>
+                        <button mat-button class="btn-info" (click)="onDelete(lembrete.id)">Excluir</button>
+                        <button mat-button class="btn-danger" [routerLink]="['/editar', lembrete.id]">Editar</button>
                     </mat-action-row>
                 </mat-expansion-panel>
             </mat-accordion>

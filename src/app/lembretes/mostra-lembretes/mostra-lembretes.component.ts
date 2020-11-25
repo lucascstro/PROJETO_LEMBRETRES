@@ -26,6 +26,12 @@ export class MostraLembretesComponent implements OnInit,OnDestroy {
     this.lembretesSubscription.unsubscribe();
   }
 
+  onDelete(id: string){
+    this.lembreteService.removerLembrete(id);
+  }
+
+  
+
   step = 0;
   setStep(index: number) {
     this.step = index;

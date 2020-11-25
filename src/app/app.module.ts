@@ -17,13 +17,16 @@ import {MatDatepickerModule } from '@angular/material/datepicker';
 import {FormsModule} from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {HttpClientModule} from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { CabecalhoComponent } from './cabecalho/cabecalho.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     FormularioComponent,
-    MostraLembretesComponent
+    MostraLembretesComponent,
+    CabecalhoComponent
 
   ],
   imports: [
@@ -37,7 +40,9 @@ import {HttpClientModule} from '@angular/common/http';
     MatExpansionModule,
     MatDatepickerModule,
     FormsModule,MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
