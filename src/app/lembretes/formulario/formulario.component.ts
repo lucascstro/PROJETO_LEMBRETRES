@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import {LembretesService} from '../lembrete.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import {Lembretes } from '../lembrete.model';
+import {formatDate} from '@angular/common';
+import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
  @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -35,18 +37,22 @@ export class FormularioComponent implements OnInit  {
       return;
     }
     if(this.modo === "criar"){
+      var data = new Date();
     this.lembreteService.adicionarLembretes(
       form.value.titulo,
       form.value.date,
-      form.value.descricao
+      form.value.descricao,
+      data.toISOString().toString()
     );
     }
     else{
+      var data = new Date();
       this.lembreteService.atualizarLembrete(
         this.idLembrete,
         form.value.titulo,
         form.value.date,
-        form.value.descricao
+        form.value.descricao,
+        data.toISOString().toString()
       )
     }
 

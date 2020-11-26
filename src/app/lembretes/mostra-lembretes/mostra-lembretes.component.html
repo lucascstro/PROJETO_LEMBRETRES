@@ -6,15 +6,15 @@
                 <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle *ngFor="let lembrete of lembretes">
                     <mat-expansion-panel-header>
                         <mat-panel-title class="font-weight-bold">
-                          <h4>{{lembrete.titulo}}</h4>
+                            <h6>{{lembrete.titulo}}</h6>
                         </mat-panel-title>
                         <mat-panel-description>
                             Data: {{lembrete.data}}
                         </mat-panel-description>
                     </mat-expansion-panel-header>
-                    <h5>Descrição:</h5>
+                    <h6>Descrição:</h6>
                     <p> {{lembrete.descricao}}</p>
-
+                    <p class="dataC">{{lembrete.dataC}}</p>
                     <mat-action-row>
                         <button mat-button class="btn-danger" (click)="onDelete(lembrete.id)">Excluir</button>
                         <button mat-button class="btn-warning" [routerLink]="['/editar', lembrete.id]">Editar</button>

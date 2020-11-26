@@ -29,7 +29,9 @@ export class LembretesService{
         id:lembrete._id,
         titulo:lembrete.titulo,
         data:lembrete.data,
-        descricao:lembrete.descricao
+        descricao:lembrete.descricao,
+        dataC:lembrete.dataC
+
       }
     })
       })).subscribe(
@@ -39,12 +41,15 @@ export class LembretesService{
     })}
 
 
-  adicionarLembretes(titulo: string, data: string, descricao: string) {
+  adicionarLembretes(titulo: string, data: string, descricao: string, dataC: string) {
+
     const lembretes: Lembretes = {
     id: null,
     titulo: titulo,
     data:data,
     descricao: descricao,
+    dataC: dataC
+
     };
     this.httpClient.post<{mensagem: string, id: string}> ('http://localhost:3000/api/lembretes',lembretes).subscribe(
     (dados) => {
@@ -53,6 +58,8 @@ export class LembretesService{
     this.listaLembretesAtualizada.next([...this.lembretes]);
     })
   }
+
+
     getListaDeLembretesAtualizadaObservable(){
       return this.listaLembretesAtualizada.asObservable();
     }
@@ -63,12 +70,13 @@ export class LembretesService{
         descricao:string}>('http://localhost:3000/api/lembretes/${idLembrete}');
     }*/
 
-    atualizarLembrete (id:string, titulo:string, data:string, descricao:string){
+    atualizarLembrete (id:string, titulo:string, data:string, descricao:string, dataC: string){
       const lembrete : Lembretes = {
         id,
         titulo,
         data,
-        descricao
+        descricao,
+        dataC
           };
       this.httpClient.put(`http://localhost:3000/api/lembretes/${id}`, lembrete)
       .subscribe((res => console.log(res => {

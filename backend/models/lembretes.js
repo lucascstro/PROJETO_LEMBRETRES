@@ -6,6 +6,8 @@ const lembreteSchema = mongoose.Schema({
     titulo: { type: String, required: true },
     data: { type: String, required: true },
     descricao: { type: String, required: true },
+    dataC: { type: String, required: false }
+
 
 });
 //criamos o modelo associado ao nome Lembrete e exportamos

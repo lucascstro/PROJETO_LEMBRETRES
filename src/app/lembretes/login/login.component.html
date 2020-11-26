@@ -8,20 +8,20 @@
             <div class="row justify-content-center">
                 <mat-form-field>
                     <mat-label>Login</mat-label>
-                    <input matInput type="text">
+                    <input matInput type="text" name="usuario" matInputngModel required minlength="3" [(ngModel)]="requestLogin.usuario">
                 </mat-form-field>
             </div>
             <div class="row justify-content-center">
                 <mat-form-field>
                     <mat-label>Senha</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'">
+                    <input matInput [type]="hide ? 'password' : 'text' " name="senha" matInputngModel required minlength="3" [(ngModel)]="requestLogin.senha">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
                 </mat-form-field>
             </div>
             <div class="row justify-content-center ">
-                <button mat-raised-button class="bg-info" style="color: white;">Login</button>
+                <button mat-raised-button class="bg-info" style="color: white;" (click)="doLogin()">Login</button>
             </div>
         </div>
     </div>
