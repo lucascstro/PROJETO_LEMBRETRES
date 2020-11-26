@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {RequestLogin} from './login.model';
 import { Observable } from 'rxjs';
@@ -14,7 +14,7 @@ export class LoginService{
     requestLogin
     );
   }
+
+
+
 }
-
-
-
