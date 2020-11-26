@@ -1,7 +1,7 @@
 <app-cabecalho></app-cabecalho>
 <div class="container">
     <div class="card mt-5">
-        <div class="card-header bg-info text-white">Suas tarefas</div>
+        <div class="card-header text-white font-weight-bold" style="background-color: #DF0101;">Suas tarefas</div>
         <div class="card-body" style="background-color: f05454;">
             <mat-accordion class="example-headers-align" *ngIf="lembretes.length>0">
                 <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle *ngFor="let lembrete of lembretes">
