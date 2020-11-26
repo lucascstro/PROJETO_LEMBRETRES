@@ -38,7 +38,7 @@ app.get('/api/lembretes:id', (req, res, next) => {
         if (lem) {
             res.status(200).json(lem);
         } else
-            res.status(404).json({ mensagem: "Lembrete não encontrado" })
+            res.status(404).json({ mensagem: "LembreteNEncontrado" })
     })
 });
 
@@ -53,7 +53,7 @@ app.post('/api/lembretes', (req, res, next) => {
 
     lembretes.save().then(lembreteInserido => {
         res.status(201).json({
-            mensagem: 'Lembrete Inserido',
+            mensagem: 'LembreteInserido',
             id: lembreteInserido._id
         })
     })
@@ -62,7 +62,7 @@ app.post('/api/lembretes', (req, res, next) => {
 app.delete('/api/lembretes/:id', (req, res, next) => {
     Lembretes.deleteOne({ _id: req.params.id }).then((resultado) => {
         console.log(resultado);
-        res.status(200).json({ mensagem: "Lembrete removido" })
+        res.status(200).json({ mensagem: "LembreteRemovido" })
     })
     console.log(req.params);
     res.status(200).end();
@@ -105,33 +105,25 @@ app.post('/api/novoUsuario', (req, res, next) => {
 app.get('/api/novoUsuario', (req, res, next) => {
     Logon.find().then(
         lista => {
-            console.log(lista);
             res.status(200).json({
-                mensagem: "Tudo OK",
+                mensagem: "true",
                 logon: lista
             });
         })
 });
 
 app.post('/api/autenticacao', async(req, res) => {
-        const data = new Logon({
-            usuario: req.body.usuario,
-            senha: req.body.senha
-        });
-        console.log("entrou na api")
         const { usuario, senha } = req.body;
         if (!await Logon.findOne({ usuario })) {
-            console.log("usuario invalido")
-            res.status(400).send({ erro: 'falha' })
-        }
-        const login = await Logon.findOne({ usuario }).select('+senha');
-
-        if (usuario && senha == login.senha) {
-            console.log("Logou")
-            res.send(true);
+            res.status(400).send({ error: 'Usuario invalido' })
         } else {
-            console.log("usuario incorreto")
-            res.status(400).send({ erro: 'falha' })
+            const login = await Logon.findOne({ usuario }).select('+senha');
+
+            if (usuario && senha == login.senha) {
+                res.send(true);
+            } else {
+                res.status(400).send({ error: 'Senha invalida' })
+            }
         }
     }
 

@@ -5,6 +5,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import {Lembretes } from '../lembrete.model';
 import {formatDate} from '@angular/common';
 import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
+import { AlertService } from 'src/app/alert.service';
  @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -14,7 +15,8 @@ export class FormularioComponent implements OnInit  {
 
   constructor(
     public lembreteService:LembretesService,
-    public route: ActivatedRoute) { }
+    public route: ActivatedRoute,
+    public alertService:AlertService) { }
 
   private modo: string = "criar";
   private idLembrete:string;
@@ -43,7 +45,9 @@ export class FormularioComponent implements OnInit  {
       form.value.date,
       form.value.descricao,
       data.toISOString().toString()
+
     );
+    this.alertService.sucesse("O lembrete foi inserido","Sucesso");
     }
     else{
       var data = new Date();
@@ -53,7 +57,8 @@ export class FormularioComponent implements OnInit  {
         form.value.date,
         form.value.descricao,
         data.toISOString().toString()
-      )
+      );
+      this.alertService.sucesse("O lembrete foi atualizado","Sucesso");
     }
 
   form.resetForm();

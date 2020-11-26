@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
+import { AlertService } from 'src/app/alert.service';
 import{RequestLogin} from './login.model'
 import { LoginService } from './login.service';
 
@@ -11,7 +12,12 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
 
   public requestLogin : RequestLogin;
-  constructor( private loginService: LoginService, private router :Router) { }
+  constructor( private loginService: LoginService,
+     private router :Router,
+     private alertService:AlertService)
+     {
+
+      }
 
 
   ngOnInit(): void {
@@ -23,12 +29,12 @@ export class LoginComponent implements OnInit {
   public doLogin() :void{
    this.loginService.doLogin(this.requestLogin).subscribe((data) =>{
     if(data){
-      this.router.navigate(['criar'])
-    }else
-    console.log("erro")
+      this.router.navigate(['criar'])}
    },
-   (error) =>{
-    console.log("erro")
+   (HttpError) =>{
+    this.alertService.error(HttpError.error.error
+    ,"Falha ao logar");
+
    }
    );
   }

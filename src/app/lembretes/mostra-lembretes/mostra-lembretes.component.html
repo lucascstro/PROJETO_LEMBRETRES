@@ -14,7 +14,7 @@
                     </mat-expansion-panel-header>
                     <h6>Descrição:</h6>
                     <p> {{lembrete.descricao}}</p>
-                    <p class="dataC">{{lembrete.dataC}}</p>
+                    <p> Criado em: {{lembrete.dataC}}</p>
                     <mat-action-row>
                         <button mat-button class="btn-danger" (click)="onDelete(lembrete.id)">Excluir</button>
                         <button mat-button class="btn-warning" [routerLink]="['/editar', lembrete.id]">Editar</button>

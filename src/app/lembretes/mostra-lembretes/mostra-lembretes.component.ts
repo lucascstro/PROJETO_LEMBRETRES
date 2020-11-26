@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {Lembretes} from '../lembrete.model';
 import {LembretesService} from '../lembrete.service';
 import {Subscription, Observable} from 'rxjs';
+import { AlertService } from 'src/app/alert.service';
 
 
 @Component({
@@ -13,7 +14,10 @@ export class MostraLembretesComponent implements OnInit,OnDestroy {
  lembretes: Lembretes[] = [];
  private lembretesSubscription: Subscription;
 
-  constructor(public lembreteService: LembretesService) { }
+  constructor(
+    public lembreteService: LembretesService,
+    public alertService:AlertService
+    ) { }
 
   ngOnInit(): void {
     this.lembreteService.getLembretes();
@@ -28,9 +32,10 @@ export class MostraLembretesComponent implements OnInit,OnDestroy {
 
   onDelete(id: string){
     this.lembreteService.removerLembrete(id);
+    this.alertService.sucesse("O lembrete foi deletado","Sucesso");
   }
 
-  
+
 
   step = 0;
   setStep(index: number) {
