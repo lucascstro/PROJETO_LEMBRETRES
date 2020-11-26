@@ -45,7 +45,6 @@ export class FormularioComponent implements OnInit  {
       form.value.date,
       form.value.descricao,
       data.toISOString().toString()
-
     );
     this.alertService.sucesse("O lembrete foi inserido","Sucesso");
     }

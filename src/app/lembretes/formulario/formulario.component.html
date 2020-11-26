@@ -1,3 +1,4 @@
+<app-cabecalho></app-cabecalho>
 <form (submit)="onSalvarLembrete(lembreteForm)" #lembreteForm="ngForm">
     <div class="container">
         <div class="card mt-5">
@@ -7,14 +8,14 @@
                     <div class="col-8">
                         <mat-form-field class="col-12">
                             <mat-label>Titulo</mat-label>
-                            <input type="text" matInput name="titulo" ngModel required minlength="1"#titulo="ngModel" [ngModel]="lembrete?.titulo" >
+                            <input type="text" matInput name="titulo" ngModel required minlength="1" #titulo="ngModel" [ngModel]="lembrete?.titulo">
                             <mat-error *ngIf="titulo.invalid">Digite um titutlo válido</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-4">
                         <mat-form-field class="col-12">
                             <mat-label>Data</mat-label>
-                            <input type="date"  matInput name="date" ngModel required  minlength="1" #date="ngModel" [ngModel]="lembrete?.data">
+                            <input type="date" matInput name="date" ngModel required minlength="1" #date="ngModel" [ngModel]="lembrete?.data">
                             <mat-error *ngIf="date.invalid">Digite uma data válido</mat-error>
                         </mat-form-field>
                     </div>
@@ -29,7 +30,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center ">
-                    <button  mat-raised-button color="accent">Salvar</button>
+                    <button mat-raised-button color="accent">Salvar</button>
                 </div>
             </div>
         </div>
